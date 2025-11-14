@@ -5,14 +5,6 @@ return {
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
-
   { import = "nvchad.blink.lazyspec" },
 
   {
@@ -41,10 +33,16 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    dependencies = { "williamboman/mason.nvim" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
+    },
     opts = {
       automatic_installation = true,
     },
+    config = function()
+      require "configs.lspconfig"
+    end,
   },
 
   {
